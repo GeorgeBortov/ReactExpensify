@@ -6,5 +6,8 @@
     "snapshotSerializers": [
         "enzyme-to-json/serializer"
     ],
-    "testURL": "http://localhost"
+    "testURL": "http://localhost",
+    "setupFiles": [
+        "<rootDir>/src/tests/setupTests.js"
+    ]
 }
