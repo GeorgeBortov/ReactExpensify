@@ -6,18 +6,18 @@ test('Should filters by text value', () => {
     const filters = {
         text: 'e',
         sortBy: 'date',
-        StartDate: undefined,
+        startDate: undefined,
         endDate: undefined
     };
     const result = selectExpenses(expenses, filters);
     expect(result).toEqual([expenses[2], expenses[1]]);
 });
 
-test('should filter by StartDate', () => {
+test('should filter by startDate', () => {
     const filters = {
         text: '',
         sortBy: 'date',
-        StartDate: moment(0),
+        startDate: moment(0),
         endDate: undefined
     }
     const result = selectExpenses(expenses, filters);
@@ -28,7 +28,7 @@ test('should filter by endDate', () => {
     const filters = {
         text: '',
         sortBy: 'date',
-        StartDate: undefined,
+        startDate: undefined,
         endDate: moment(0).add(2, 'days')
     }
     const result = selectExpenses(expenses, filters);
@@ -39,7 +39,7 @@ test('should sort by date', () => {
     const filters = {
         text: '',
         sortBy: 'date',
-        StartDate: undefined,
+        startDate: undefined,
         endDate: undefined
     }
     const result = selectExpenses(expenses, filters);
@@ -50,7 +50,7 @@ test('should sort by amount', () => {
     const filters = {
         text: '',
         sortBy: 'amount',
-        StartDate: undefined,
+        startDate: undefined,
         endDate: undefined
     }
     const result = selectExpenses(expenses, filters);

@@ -40,6 +40,13 @@ module.exports = (env) => {
               options: {
                 sourceMap: true
               }
+            },
+            {
+              loader: 'sass-resources-loader',
+              options: {
+                // Provide path to the file with resources
+                resources: './src/styles/mixins/css3-mixins.scss'
+              }
             }
           ]
         })

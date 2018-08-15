@@ -36,6 +36,11 @@ exports[`should render EditExpensePage correctly 1`] = `
     >
       Remove Expense
     </button>
+    <ConfirmModal
+      expenseDescription="Rent"
+      onRemove={[Function]}
+      onRequestClose={[Function]}
+    />
   </div>
 </div>
 `;
