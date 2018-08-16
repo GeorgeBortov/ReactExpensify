@@ -1,6 +1,64 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should correctly render ExpensesSummary with 1 expense 1`] = `
+exports[`should correctly render ExpensesSummary with 1 hidden expense 1`] = `
+<div
+  className="page-header"
+>
+  <div
+    className="content-container"
+  >
+    <h1
+      className="page-header__title"
+    >
+      Viewing 
+      <span>
+        0
+      </span>
+       
+      expenses
+       totalling 
+      <span>
+        $0.00
+      </span>
+    </h1>
+    <h2
+      className="page-header__title"
+    >
+      Hidden 
+      <span>
+        1
+      </span>
+       
+      expenses
+       totalling 
+      <span>
+        $1.95
+      </span>
+    </h2>
+    <h3
+      className="page-header__title"
+    >
+      Total sum 
+      <span>
+        $1.95
+      </span>
+    </h3>
+    <div
+      className="page-header__actions"
+    >
+      <Link
+        className="button"
+        replace={false}
+        to="/create"
+      >
+        Add Expense
+      </Link>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should correctly render ExpensesSummary with 1 visible expense 1`] = `
 <div
   className="page-header"
 >
@@ -15,12 +73,34 @@ exports[`should correctly render ExpensesSummary with 1 expense 1`] = `
         1
       </span>
        
-      expenses
+      expense
        totalling 
       <span>
-        $1.95
+        $45.00
       </span>
     </h1>
+    <h2
+      className="page-header__title"
+    >
+      Hidden 
+      <span>
+        0
+      </span>
+       
+      expense
+       totalling 
+      <span>
+        $0.00
+      </span>
+    </h2>
+    <h3
+      className="page-header__title"
+    >
+      Total sum 
+      <span>
+        $45.00
+      </span>
+    </h3>
     <div
       className="page-header__actions"
     >
@@ -48,15 +128,37 @@ exports[`should correctly render ExpensesSummary with multiple expenses 1`] = `
     >
       Viewing 
       <span>
-        3
+        2
       </span>
        
       expenses
        totalling 
       <span>
-        $1,141.95
+        $46.95
       </span>
     </h1>
+    <h2
+      className="page-header__title"
+    >
+      Hidden 
+      <span>
+        1
+      </span>
+       
+      expenses
+       totalling 
+      <span>
+        $1,095.00
+      </span>
+    </h2>
+    <h3
+      className="page-header__title"
+    >
+      Total sum 
+      <span>
+        $1,141.95
+      </span>
+    </h3>
     <div
       className="page-header__actions"
     >
