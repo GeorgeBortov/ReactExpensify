@@ -7,8 +7,8 @@ export const LoginPage = ({ startGoogleLogin, startFacebookLogin }) => (
         <div className="box-layout__box">
             <h1 className="box-layout__title">Expensify</h1>
             <p>It's time to get your expenses under control.</p>
-            <button className="button" onClick={startGoogleLogin}>Login with Google</button>
-            <button className="button" onClick={startFacebookLogin}>Login with Facebook</button>
+            <button className="button button--google-login" onClick={startGoogleLogin}>Login with Google</button>
+            <button className="button button--facebook-login" onClick={startFacebookLogin}>Login with Facebook</button>
         </div>
     </div>
 );
