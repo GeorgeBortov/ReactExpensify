@@ -29,8 +29,6 @@ ReactDOM.render(<LoadingPage />, document.getElementById('app'));
 
 firebase.auth().onAuthStateChanged((user) => {
     if(user) {
-        console.log(user);
-        // change uid to same if differents acounts
         store.dispatch(login(user.uid));
         store.dispatch(startSetExpenses()).then(() => {
             renderApp();
@@ -41,6 +39,6 @@ firebase.auth().onAuthStateChanged((user) => {
     } else {
         store.dispatch(logout());
         renderApp();
-        history.push('/');
+        // history.push('/');
     }
 });

@@ -6,7 +6,7 @@ export const Footer = ({ startLogout }) => (
         <div className="content-container">
             <div className="footer__content">
                 <Link className="header_link" to="/">
-                   Go home
+                   Home
                 </Link>
                 <Link className="header_link" to="/privacy-policy">
                     Privacy Policy
