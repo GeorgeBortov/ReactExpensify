@@ -1,9 +1,10 @@
 .page-content  {
     padding-bottom: 45px;
     a {
-        color: #FFFFFF;
+        color: $blue;
         text-decoration: none;
         &:hover {
+            color: darken($blue, 5%);
             text-decoration: underline;
         }
     }

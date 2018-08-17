@@ -49,8 +49,8 @@ const PrivacyPolicyPage = () => (
             <p>Any claim related to Self empoyed's Website shall be governed by the laws of af without regards to its conflict of law provisions.</p>
 
             <p><a href="https://termsofservicegenerator.net">These Terms and Conditions have been created at World's Free Terms Of Service Generator.</a></p>
-            <Footer />
         </div>
+        <Footer />
     </div>
 );
 
