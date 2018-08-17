@@ -1,19 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export const Footer = ({ startLogout }) => (
-    <header className="footer">
+export const Footer = () => (
+    <footer className="footer">
         <div className="content-container">
             <div className="footer__content">
-                <Link className="header_link" to="/">
+                <Link className="button button--link" to="/">
                    Home
                 </Link>
-                <Link className="header_link" to="/privacy-policy">
+                <Link className="button button--link" to="/privacy-policy">
                     Privacy Policy
                 </Link>
             </div>
         </div>
-    </header>
+    </footer>
 );
 
 export default Footer;

@@ -14,12 +14,10 @@ body {
 
 button {
   cursor: pointer;
-}
-
-button:disabled {
-  cursor: default;
-}
-
-button:focus {
-  outline: none;
+  &:disabled {
+    cursor: default;
+  }
+  &:focus {
+    outline: none;
+  }
 }

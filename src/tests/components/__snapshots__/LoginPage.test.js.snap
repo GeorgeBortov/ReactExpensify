@@ -18,12 +18,58 @@ exports[`should render LoginPage correctly 1`] = `
     <button
       className="button button--google-login"
     >
-      Login with Google
+      <span
+        className="button--soc-icon"
+      >
+        <img
+          src="/images/google-ico.png"
+        />
+      </span>
+      <span>
+        Login with Google
+      </span>
     </button>
     <button
       className="button button--facebook-login"
     >
-      Login with Facebook
+      <span
+        className="button--soc-icon"
+      >
+        <img
+          src="/images/facebook-ico.png"
+        />
+      </span>
+      <span>
+        Login with Facebook
+      </span>
+    </button>
+    <button
+      className="button button--github-login"
+    >
+      <span
+        className="button--soc-icon"
+      >
+        <img
+          src="/images/github-ico.png"
+        />
+      </span>
+      <span>
+        Login with Github
+      </span>
+    </button>
+    <button
+      className="button button--twitter-login"
+    >
+      <span
+        className="button--soc-icon"
+      >
+        <img
+          src="/images/twitter-ico.png"
+        />
+      </span>
+      <span>
+        Login with Twitter
+      </span>
     </button>
   </div>
 </div>

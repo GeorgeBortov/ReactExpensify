@@ -1,0 +1,11 @@
+.not-found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 93vh;
+    height: calc(100vh - 45px);
+    text-align: center;
+    .page-header__title {
+        margin-bottom: 25px;
+    }
+}

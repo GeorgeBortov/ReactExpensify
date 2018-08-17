@@ -1,8 +1,9 @@
 @import './base/settings';
 @import './base/base';
-@import './components/box-layout';
 @import './components/button';
+@import './components/box-layout';
 @import './components/header';
+@import './components/footer';
 @import './components/content-container';
 @import './components/page-header';
 @import './components/input-group';
@@ -12,3 +13,5 @@
 @import './components/list';
 @import './components/loader';
 @import './components/modal';
+@import './components/page-not-found';
+@import './components/page-privacy-policy';

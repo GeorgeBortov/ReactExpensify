@@ -10,6 +10,8 @@
     text-decoration: none;
     &:hover {
         background: darken($blue, 5%);
+        color: #FFFFFF;
+        text-decoration: none;
     }
     &--link {
         background: none;

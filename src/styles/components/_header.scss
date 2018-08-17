@@ -12,5 +12,12 @@
         h1 {
             margin: 0;
         }
+        &:hover {
+            color: #FFFFFF;
+            text-decoration: none;
+        }
     }
+}
+.header + div {
+    padding-bottom: 45px;
 }

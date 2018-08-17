@@ -3,7 +3,7 @@ import Footer from './Footer';
 
 const PrivacyPolicyPage = () => (
     <div>
-        <div className="content-container">
+        <div className="content-container privacy-policy">
             <h2>Privacy Policy</h2>
             <p> Andrew Mead, George Bortov built the Expensify app as a Free app. This SERVICE is provided by Andrew Mead, George Bortov at no cost and is intended for use as is.
             </p>
