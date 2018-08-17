@@ -12,10 +12,17 @@ const config = {
 firebase.initializeApp(config);
 
 const database = firebase.database();
+
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
-const facebookAuthProvider = new firebase.auth.FacebookAuthProvider();
-const githubAuthProvider = new firebase.auth.GithubAuthProvider();
+
+const facebookAuth = new firebase.auth.FacebookAuthProvider();
+const facebookAuthProvider = facebookAuth.addScope('email');
+
+const githubAuth = new firebase.auth.GithubAuthProvider();
+const githubAuthProvider = githubAuth.addScope('user:email');
+
 const twitterAuthProvider = new firebase.auth.TwitterAuthProvider();
+// const twitterAuthProvider = twitterAuth.addScope('email');
 
 export { firebase,
     googleAuthProvider,

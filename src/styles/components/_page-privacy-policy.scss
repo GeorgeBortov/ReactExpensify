@@ -1,10 +1,9 @@
-.privacy-policy {
+.page-content  {
     padding-bottom: 45px;
     a {
-        color: $blue;
+        color: #FFFFFF;
         text-decoration: none;
         &:hover {
-            color: darken($blue, 5%);
             text-decoration: underline;
         }
     }

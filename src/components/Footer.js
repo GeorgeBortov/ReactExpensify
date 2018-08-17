@@ -11,6 +11,9 @@ export const Footer = () => (
                 <Link className="button button--link" to="/privacy-policy">
                     Privacy Policy
                 </Link>
+                <Link className="button button--link" to="/terms-of-service">
+                    Terms of Service
+                </Link>
             </div>
         </div>
     </footer>

@@ -6,6 +6,7 @@ import AddExpensePage from '../components/AddExpensePage';
 import EditExpensePage from '../components/EditExpensePage';
 import NotFoundPage from '../components/NotFoundPage';
 import PrivacyPolicyPage from '../components/PrivacyPolicyPage';
+import TermsOfService from '../components/TermsOfService';
 import LoginPage from '../components/LoginPage';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
@@ -21,6 +22,7 @@ const AppRouter = () => (
                 <PrivateRoute path="/create" component={AddExpensePage} />
                 <PrivateRoute path="/edit/:id" component={EditExpensePage} />
                 <Route path="/privacy-policy" component={PrivacyPolicyPage} />
+                <Route path="/terms-of-service" component={TermsOfService} />
                 <Route component={NotFoundPage} />
             </Switch>
         </div>
