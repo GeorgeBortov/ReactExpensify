@@ -18,12 +18,6 @@ export class LoginPage extends React.Component {
             currProvider: props.currProvider ? props.currProvider : ''
         }
     }
-    openModal = () => {
-        this.props.openModal();
-    }
-    closeModal= () => {
-        this.props.closeModal();
-    }
     getProviderForProviderId = (name) => {
         switch (name) {
             case 'google.com':
@@ -52,7 +46,7 @@ export class LoginPage extends React.Component {
                     const currProvider = this.getProviderForProviderId(methods[0]);
                     this.setState(() => ({ existAccount: methods[0] }));
                     this.setState(() => ({ currProvider }));
-                    this.openModal();
+                    this.props.openModal();
                 });                
             } else {
                 console.log('Error: ', error);
@@ -100,7 +94,7 @@ export class LoginPage extends React.Component {
                 </div>
                 <ConftrmAuthModal
                     isOpen={this.props.modalStatus}
-                    onRequestClose={this.closeModal}
+                    onRequestClose={this.props.closeModal}
                     onAuth={this.addNewAccount}
                     existAccount={this.state.existAccount}
                 />

@@ -6,12 +6,6 @@ import { startEditExpense, startRemoveExpense } from '../actions/expenses';
 import { openModal, closeModal } from '../actions/modal';
 
 export class EditExpensePage extends React.Component {
-    openModal = () => {
-        this.props.openModal();
-    }
-    closeModal= () => {
-        this.props.closeModal();
-    }
     onSubmit = (expense) => {
         this.props.startEditExpense(this.props.expense.id, expense);
         this.props.history.push('/');
@@ -36,10 +30,10 @@ export class EditExpensePage extends React.Component {
                                 expense={this.props.expense}
                                 onSubmit={this.onSubmit}
                             />
-                            <button className="button button--secondary" onClick={this.openModal}>Remove Expense</button>
+                            <button className="button button--secondary" onClick={this.props.openModal}>Remove Expense</button>
                             <ConfirmModal
                                 isOpen={this.props.modalStatus}
-                                onRequestClose={this.closeModal}
+                                onRequestClose={this.props.closeModal}
                                 expenseDescription={this.props.expense.description}
                                 onRemove={this.onRemove}
                             />
