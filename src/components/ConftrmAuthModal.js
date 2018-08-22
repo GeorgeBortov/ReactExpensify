@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 
-const ConfirmModal = ({isOpen, onRequestClose, onRemove, expenseDescription}) => (
+const ConfirmModal = ({isOpen, onRequestClose, onAuth, existAccount}) => (
     <Modal
         isOpen={isOpen}
         onRequestClose={onRequestClose}
@@ -12,8 +12,8 @@ const ConfirmModal = ({isOpen, onRequestClose, onRemove, expenseDescription}) =>
     >
         <div className="modal__body">
             <button onClick={onRequestClose} className="modal__close"></button>
-            <h3 className="modal__title">Are you sure you want to delete a "{expenseDescription}" expensify?</h3>
-            <button onClick={onRemove} className="button removeExpense">Yes</button>
+            <h3 className="modal__title">You already authenticated with a "{existAccount}". Do you want to sign in with a different account?</h3>
+            <button onClick={onAuth} className="button removeExpense">Yes</button>
             <button onClick={onRequestClose} className="button button--secondary">No</button>
         </div>
                
