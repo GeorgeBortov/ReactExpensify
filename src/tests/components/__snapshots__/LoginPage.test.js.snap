@@ -17,6 +17,7 @@ exports[`should render LoginPage correctly 1`] = `
     </p>
     <button
       className="button button--google-login"
+      onClick={[Function]}
     >
       <span
         className="button--soc-icon"
@@ -31,6 +32,7 @@ exports[`should render LoginPage correctly 1`] = `
     </button>
     <button
       className="button button--facebook-login"
+      onClick={[Function]}
     >
       <span
         className="button--soc-icon"
@@ -45,6 +47,7 @@ exports[`should render LoginPage correctly 1`] = `
     </button>
     <button
       className="button button--github-login"
+      onClick={[Function]}
     >
       <span
         className="button--soc-icon"
@@ -59,6 +62,7 @@ exports[`should render LoginPage correctly 1`] = `
     </button>
     <button
       className="button button--twitter-login"
+      onClick={[Function]}
     >
       <span
         className="button--soc-icon"
@@ -72,5 +76,9 @@ exports[`should render LoginPage correctly 1`] = `
       </span>
     </button>
   </div>
+  <ConfirmModal
+    addNewAccount={[Function]}
+    providerName=""
+  />
 </div>
 `;

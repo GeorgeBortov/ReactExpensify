@@ -24,9 +24,23 @@ const githubAuthProvider = githubAuth.addScope('user:email');
 
 const twitterAuthProvider = new firebase.auth.TwitterAuthProvider();
 
-export { firebase,
-    googleAuthProvider,
-    facebookAuthProvider,
-    githubAuthProvider,
-    twitterAuthProvider,
-database as default };
+const getProvider = (name) => {
+    switch (name) {
+        case 'google.com':
+            return googleAuthProvider;
+        case 'facebook.com':
+            return facebookAuthProvider;
+        case 'github.com':
+            return githubAuthProvider;
+        case 'twitter.com':
+            return twitterAuthProvider;
+        default:
+            return undefined;
+    }
+}
+
+export {
+    firebase,
+    getProvider,
+    database as default
+};

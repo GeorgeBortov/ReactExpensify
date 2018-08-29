@@ -3,7 +3,7 @@
 exports[`should render PrivacyPolicyPage correctly 1`] = `
 <div>
   <div
-    className="content-container privacy-policy"
+    className="content-container page-content"
   >
     <h2>
       Privacy Policy

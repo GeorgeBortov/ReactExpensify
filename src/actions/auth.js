@@ -1,37 +1,35 @@
-import { firebase,
-    googleAuthProvider,
-    facebookAuthProvider,
-    githubAuthProvider,
-twitterAuthProvider } from '../firebase/firebase';
+import {
+    firebase,
+    getProvider
+} from '../firebase/firebase';
 
 export const login = (uid) => ({
     type: 'LOGIN',
     uid
 });
 
-export const startGoogleLogin = () => {
+export const startLogin = (providerName) => {
+    const provider = getProvider(providerName);
     return () => {
-        return firebase.auth().signInWithPopup(googleAuthProvider);
+        return firebase.auth().signInWithPopup(provider).catch(({ code = '', credential, email }) => {
+            if (code === "auth/account-exists-with-different-credential") {
+                return firebase.auth().fetchSignInMethodsForEmail(email).then((methods) => {
+                    return {
+                        currProvider: getProvider(methods[0]),
+                        credential,
+                        code
+                    }
+                });
+            }
+        });
     };
-}
+};
 
-export const startFacebookLogin = () => {
-    return () => {
-        return firebase.auth().signInWithPopup(facebookAuthProvider);
-    };
-}
-
-export const startGithubLogin = () => {
-    return () => {
-        return firebase.auth().signInWithPopup(githubAuthProvider);
-    };
-}
-
-export const startTwitterLogin = () => {
-    return () => {
-        return firebase.auth().signInWithPopup(twitterAuthProvider);
-    };
-}
+export const authenticateWithNewAccount = (currProvider, credential) => {
+    firebase.auth().signInWithPopup(currProvider).then((result) => {
+        result.user.linkAndRetrieveDataWithCredential(credential);
+    });
+};
 
 export const logout = () => ({
     type: 'LOGOUT'

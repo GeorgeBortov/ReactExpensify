@@ -1,65 +1,49 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { firebase } from '../firebase/firebase';
 import {
-    startGoogleLogin,
-    startFacebookLogin,
-    startGithubLogin,
-    startTwitterLogin
+    startLogin,
+    authenticateWithNewAccount
 } from '../actions/auth';
-import ConftrmAuthModal from './ConftrmAuthModal';
+import ConfirmAuthModal from './ConfirmAuthModal';
 import { openModal, closeModal } from '../actions/modal';
+
 export class LoginPage extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
             credential: props.credential ? props.credential : '',
-            currProvider: props.currProvider ? props.currProvider : ''
-        }
-    }
-    getProviderForProviderId = (name) => {
-        switch (name) {
-            case 'google.com':
-                return new firebase.auth.GoogleAuthProvider();
-            case 'facebook.com':
-                return new firebase.auth.FacebookAuthProvider();
-            case 'github.com':
-                return new firebase.auth.GithubAuthProvider();
-            case 'twitter.com':
-                return new firebase.auth.TwitterAuthProvider();
-            default:
-                return undefined;
-        }
-    }
+            currProvider: props.currProvider ? props.currProvider : '',
+            providerName: props.providerName ? props.providerName : ''
+        };
+    };
+
     addNewAccount = () => {
         this.props.closeModal();
-        firebase.auth().signInWithPopup(this.state.currProvider).then((result) => {
-            result.user.linkAndRetrieveDataWithCredential(this.state.credential);
+        authenticateWithNewAccount(this.state.currProvider, this.state.credential);
+    };
+    auth = (providerName, e) => {
+        e.preventDefault();
+
+        this.props.startLogin(providerName)
+        .then(({code, credential, currProvider}) => {
+            if(code === "auth/account-exists-with-different-credential" ) {
+                this.setState(() => ({
+                    credential,
+                    currProvider,
+                    providerName: currProvider.providerId          
+                }));
+                this.props.openModal();
+            };
         });
-    }
-    auth = (provider) => {
-        provider().catch(({ code, credential, email }) => {
-            if (code === "auth/account-exists-with-different-credential") {
-                this.setState(() => ({ credential }));
-                firebase.auth().fetchSignInMethodsForEmail(email).then((methods) => {
-                    const currProvider = this.getProviderForProviderId(methods[0]);
-                    this.setState(() => ({ existAccount: methods[0] }));
-                    this.setState(() => ({ currProvider }));
-                    this.props.openModal();
-                });                
-            } else {
-                console.log('Error: ', error);
-            }
-        });
-    }
+    };
     render() {
         return (
             <div className="box-layout">
                 <div className="box-layout__box">
                     <h1 className="box-layout__title">Expensify</h1>
                     <p>It's time to get your expenses under control.</p>
-                    <button className="button button--google-login" onClick={() => this.auth(this.props.startGoogleLogin)}>
+                    <button className="button button--google-login" onClick={this.auth.bind(this, 'google.com')}>
                         <span className="button--soc-icon">
                             <img src="/images/google-ico.png" />
                         </span>
@@ -67,7 +51,7 @@ export class LoginPage extends React.Component {
                             Login with Google
                         </span>
                     </button>
-                    <button className="button button--facebook-login" onClick={() => this.auth(this.props.startFacebookLogin)}>
+                    <button className="button button--facebook-login" onClick={this.auth.bind(this, 'facebook.com')}>
                         <span className="button--soc-icon">
                             <img src="/images/facebook-ico.png" />
                         </span>
@@ -75,7 +59,7 @@ export class LoginPage extends React.Component {
                             Login with Facebook
                         </span>
                     </button>
-                    <button className="button button--github-login" onClick={() => this.auth(this.props.startGithubLogin)}>
+                    <button className="button button--github-login" onClick={this.auth.bind(this, 'github.com')}>
                         <span className="button--soc-icon">
                             <img src="/images/github-ico.png" />
                         </span>
@@ -83,7 +67,7 @@ export class LoginPage extends React.Component {
                             Login with Github
                         </span>
                     </button>
-                    <button className="button button--twitter-login" onClick={() => this.auth(this.props.startTwitterLogin)}>
+                    <button className="button button--twitter-login" onClick={this.auth.bind(this, 'twitter.com')}>
                         <span className="button--soc-icon">
                             <img src="/images/twitter-ico.png" />
                         </span>
@@ -92,11 +76,11 @@ export class LoginPage extends React.Component {
                         </span>
                     </button>
                 </div>
-                <ConftrmAuthModal
+                <ConfirmAuthModal
                     isOpen={this.props.modalStatus}
                     onRequestClose={this.props.closeModal}
-                    onAuth={this.addNewAccount}
-                    existAccount={this.state.existAccount}
+                    providerName={this.state.providerName}
+                    addNewAccount={this.addNewAccount}
                 />
             </div>
         );
@@ -104,10 +88,8 @@ export class LoginPage extends React.Component {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    startGoogleLogin: () => dispatch(startGoogleLogin()),
-    startFacebookLogin: () => dispatch(startFacebookLogin()),
-    startGithubLogin: () => dispatch(startGithubLogin()),
-    startTwitterLogin: () => dispatch(startTwitterLogin()),
+    startLogin: (provider) => dispatch(startLogin(provider)),
+    authenticateWithNewAccount: (currProvider, credential) => dispatch(authenticateWithNewAccount(currProvider, credential)),
     openModal: () => dispatch(openModal()),
     closeModal: () => dispatch(closeModal())
 });
