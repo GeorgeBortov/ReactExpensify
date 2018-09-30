@@ -28,7 +28,6 @@ const renderApp = () => {
 ReactDOM.render(<LoadingPage />, document.getElementById('app'));
 
 firebase.auth().onAuthStateChanged((user) => {
-    // https://firebase.google.com/docs/auth/web/google-signin#handling-account-exists-with-different-credential-errors
     if (user) {
         store.dispatch(login(user.uid));
         store.dispatch(startSetExpenses()).then(() => {
