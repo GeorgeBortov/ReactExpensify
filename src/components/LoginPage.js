@@ -26,7 +26,7 @@ export class LoginPage extends React.Component {
         e.preventDefault();
 
         this.props.startLogin(providerName)
-        .then(({code, credential, currProvider}) => {
+        .then(({code = null, credential = null, currProvider = null}) => {
             if(code === "auth/account-exists-with-different-credential" ) {
                 this.setState(() => ({
                     credential,
